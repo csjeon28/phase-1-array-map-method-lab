@@ -12,5 +12,30 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
+  const newTutorials = map(tutorials, properSentence);
+  return newTutorials;
+}
+
+function map(array, modifier) {
+  const newArr = [];
+  for (const element of array) {
+    newArr.push(modifier(element));
+  }
+  return newArr;
+} 
+
+function properSentence(sentence) {
+  let newSentence = "";
+  for (let i = 0; i < sentence.length; i++) {
+    if (i === 0) {
+      newSentence += sentence.charAt(i).toUpperCase();
+      } else {
+        if (sentence.charAt(i - 1) === " ") {
+          newSentence += sentence.charAt(i).toUpperCase();
+        } else {
+          newSentence += sentence.charAt(i);
+        }
+      }
+  }
+  return newSentence;
 }
